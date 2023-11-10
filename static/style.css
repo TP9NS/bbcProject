@@ -1,0 +1,30 @@
+/* static/style.css */
+body {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto; /* 추가: 수평 가운데 정렬 */
+}
+
+#searchInput {
+    width: 70%;
+}
+
+#searchBtn {
+    margin-left: 10px;
+}
+
+#newsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.newsItem {
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+}
