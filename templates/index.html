@@ -17,14 +17,21 @@
     <div class="container-fluid d-flex justify-content-center mt-5">
         <div class="container">
             <h1 class="mb-4">BBC PROJECT</h1>
-
+        
             <div class="input-group mb-3">
                 <input type="text" class="form-control" id="searchInput" placeholder="뉴스 검색">
                 <div class="input-group-append">
                     <button class="btn btn-primary" id="searchBtn" onclick="searchNews()">검색</button>
                 </div>
             </div>
-
+        
+            <!-- 추가: 키워드 버튼 목록 -->
+            <div id="keywordList" class="mb-3">
+                {% for keyword in keywords %}
+                    <button class="btn btn-outline-secondary keywordBtn" onclick="searchByKeyword('{{ keyword }}')">{{ keyword }}</button>
+                {% endfor %}
+            </div>
+            
             <ul id="newsList">
                 {% for news_item in news_data %}
                     <li class="newsItem">
@@ -60,7 +67,19 @@
         .catch(error => console.error('Error:', error));
     }
 }
-
+function searchByKeyword(keyword) {
+    // 서버로 해당 키워드에 대한 뉴스 요청 보냄
+    fetch('/search_by_keyword', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'keyword=' + encodeURIComponent(keyword),
+    })
+    .then(response => response.json())
+    .then(data => updateNewsList(data.newsData))
+    .catch(error => console.error('Error:', error));
+}
 function updateNewsList(newsData) {
     var newsList = document.getElementById("newsList");
     newsList.innerHTML = "";

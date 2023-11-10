@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto; /* 추가: 수평 가운데 정렬 */
 }
 
@@ -27,4 +27,14 @@ body {
     background-color: #f8f9fa;
     padding: 10px;
     border-radius: 5px;
+}
+
+/* 추가: 키워드 버튼 스타일 */
+#keywordList {
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+}
+
+.keywordBtn {
+    margin-right: 5px;
 }
